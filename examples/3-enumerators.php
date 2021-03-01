@@ -57,7 +57,7 @@ function process($functionName, $enumeratorName) {
 
     $token = $redis->get('teia-card-access-token') ?: null;
 
-    $teiaCard = new Client($token);
+    $teiaCard = new Client(false, $token);
 
     if (!$token) {
         echo "\n# Token nao encontrado no Redis\n";

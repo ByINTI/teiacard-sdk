@@ -26,7 +26,7 @@ try {
     $token        = $redis->get('teia-card-access-token') ?: null;
     $refreshToken = $redis->get('teia-card-refresh-token') ?: null;
 
-    $teiaCard = new Client($token);
+    $teiaCard = new Client(false, $token);
 
     if (!$token) {
         echo "\n# Token nao encontrado no Redis\n";
@@ -67,33 +67,40 @@ try {
         echo "\n\n# Token e Refresh Token setados no Redis\n";
     }
 
+    echo "\n# Criando objeto Empresa...\n";
     $empresa = new Empresa();
     $empresa->setId(1)
             ->setNome('Teste 1')
             ->setInscricaoTipo(5)
             ->setInscricaoNumero('23823212000174');
 
+    echo "\n# Criando objeto Loja...\n";
     $loja = new Loja();
     $loja->setId(1)
          ->setInscricaoTipo(5)
          ->setInscricaoNumero('23823212000174');
 
+    echo "\n# Criando objeto Maquineta...\n";
     $maquineta = new Maquineta();
     $maquineta->setTipo(1);
     $maquineta->setNumero('555555555555555');
 
+    echo "\n# Criando objeto Estabelecimento...\n";
     $estabelecimento = new Estabelecimento();
     $estabelecimento->setNumero('88888');
     $estabelecimento->setMaquineta($maquineta);
 
+    echo "\n# Criando objeto Adquirente...\n";
     $adquirente = new Adquirente();
     $adquirente->setId(6);
     $adquirente->setEstabelecimento($estabelecimento);
 
+    echo "\n# Criando objeto Cartao...\n";
     $cartao = new Cartao();
     $cartao->setNomeProprietario('Thiago Meireles da Silva');
     $cartao->setNumeroTruncado('4111XXXXXXXX1111');
 
+    echo "\n# Criando objeto Venda...\n";
     $venda = new Venda();
     $venda->setAdquirente($adquirente)
           ->setServicoTipo(1)
@@ -114,15 +121,20 @@ try {
           ->setGatewayPedidoId('3214')
           ->setChaveErp('INTIBR-123');
 
+    echo "\n# Adicionando objeto Venda a Loja...\n";
     $loja->addVenda($venda);
 
+    echo "\n# Adicionando objeto Loja a Empresa...\n";
     $empresa->addLoja($loja);
 
+    echo "\n# Criando objeto Wrapper...\n";
     $wrapper = new Wrapper();
+    echo "\n# Adicionando objeto Empresa ao Wrapper...\n";
     $wrapper->addEmpresa($empresa);
 
+    echo "\n# Iniciando requisição de envio de Venda...\n";
     $response = $teiaCard->vendas()->send($wrapper);
-    echo "\n# Retorno da Teia Card recebido recebido:\n\n";
+    echo "\n# Retorno da Teia Card recebido:\n\n";
 
     $redis->rPush('teia-card-vendas', $response->get('id'));
 

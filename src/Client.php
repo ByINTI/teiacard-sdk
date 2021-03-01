@@ -72,33 +72,15 @@ class Client
     /** @var Venda */
     private $venda;
 
-//    public $container;
-
-    public function __construct(string $accessToken = null, float $timeout = 5.0)
+    public function __construct(bool $production = false, string $accessToken = null, float $timeout = 5.0)
     {
-//        $options = [
-//            'base_uri'        => self::BASE_URI_HMG,
-//            'timeout'         => $timeout,
-//            'connect_timeout' => $timeout,
-//            'handler' => $stack,
-//        ];
-
         if ($accessToken) {
             $this->token = $accessToken;
         }
-
-//        $this->container = [];
-//        $history         = Middleware::history($this->container);
-//
-//        $stack = HandlerStack::create();
-//        // Add the history middleware to the handler stack.
-//        $stack->push($history);
-
         $options = [
-            'base_uri'        => self::BASE_URI_HMG,
+            'base_uri'        => self::getUrlByEnv($production),
             'timeout'         => $timeout,
             'connect_timeout' => $timeout,
-//            'handler'         => $stack,
         ];
 
         $this->http = new HttpClient($options);
@@ -161,6 +143,11 @@ class Client
         }
 
         return array_merge($baseOptions, $options);
+    }
+
+    private static function getUrlByEnv(bool $production): string
+    {
+        return $production ? self::BASE_URI_PROD : self::BASE_URI_HMG;
     }
 
     public function setToken(string $token): Client
