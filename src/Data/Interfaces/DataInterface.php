@@ -1,6 +1,6 @@
 <?php
 
-namespace TeiaCardSdk\Data\Contracts;
+namespace TeiaCardSdk\Data\Interfaces;
 
 interface DataInterface
 {

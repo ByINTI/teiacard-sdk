@@ -4,7 +4,7 @@ namespace TeiaCardSdk\Data;
 
 use JsonException;
 use ReflectionClass;
-use TeiaCardSdk\Data\Contracts\DataInterface;
+use TeiaCardSdk\Data\Interfaces\DataInterface;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 
 abstract class DataTransferObject implements DataInterface

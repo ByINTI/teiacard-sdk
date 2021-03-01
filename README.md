@@ -5,6 +5,65 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 ## Dependências
 * PHP >= 7.3
 
+    #### Dependências utilizadas internamente
+    * [Guzzle v6](https://docs.guzzlephp.org/en/6.5/)
+    * [Collections v8.26](https://github.com/illuminate/collections)
+
+## Estrutura do Projeto
+
+
+```
+|
+├─ examples
+│   ├─ functions                    # pasta contendo funções que podem ser reutilizadas entre exemplos
+│   |    └─ EnumeratorCli.php       # simples CLI que permite selecionar qual enumerador deseja testar
+│   ├─ 1-auth-login-password.php    # teste referente ao login com username/password
+│   ├─ 2-auth-refresh-token.php     # teste referente ao login com refresh token
+│   └─ ...
+│
+├─ phpdocker
+│   ├─ nginx                            # pasta contendo arquivos de configurações do nginx
+│   |    └─ nginx.conf                  # arquivo básico de configuração do nginx
+│   └─ php-fpm                          # pasta contendo arquivos de configurações do php-fpm
+|        ├─ Dockerfile                  # arquivo que inicia o ambiente Docker do PHP, com as extensões necessárias
+│        └─ php-ini-overrides.ini       # arquivo que sobrescreve alguns parâmetros do PHP
+│
+├─ src
+│   ├─ Data                             # pasta contendo arquivos de configurações do nginx
+│   |    └─ Interfaces                  # arquivo básico de configuração do nginx
+│   |         └─ DataInterface.php      # interface básica para os objetos de entrada de dados
+│   | 
+│   ├─ Requests
+│   |    ├─ Autenticacao
+│   |    |    └─ Credenciais.php        # DTO utilizado para envio no momento da autenticação com a Teia Card 
+|   |    ├─ Venda
+|   |    |    ├─ Adquirente.php         # DTO utilizado para geração de dados de Adquirente no envio de vendas para a API
+|   |    |    ├─ Cartao.php             # DTO utilizado para geração de dados de Cartão no envio de vendas para a API
+│   |    |    └─ ...
+│   |    └─ DataTransferObject.php      # Classe abstrata para todos os DTOs
+|   |
+│   ├─ Endpoints                        # Classes com objetivo de enviar as requests para a API Teia Card. Sempre retornam Collection
+│   |    ├─ Autenticacao
+│   |    |    └─ Autenticacao.php       # Classe responsável por enviar as requests de autenticação 
+│   |    ├─ Enumerador
+|   |    |    ├─ Adquirente.php         # Classe responsável por enviar as requests de enumerador de Adquirentes 
+|   |    |    ├─ Bandeira.php           # Classe responsável por enviar as requests de enumerador de Bandeiras
+│   |    |    └─ ...
+│   |    ├─ Remessa
+│   |    |    └─ Venda.php              # Classe responsável por enviar as requests de Venda
+│   |    └─ Endpoint.php                # Classe abstrata para todos os Endpoints
+|   |
+│   └─ Exceptions                       # Contém todas as exceções que podem ser enviadas pelo SDK
+│        ├─ TeiaCardBaseException.php   # Exceção base do SDK, todos os erros serão lançadas dela ou de uma exceção filha
+│        └─ TeiaCardHttpException.php   # Exceção que indica que o erro veio de uma resposta da API e não do SDK em si
+|  
+├── .env                                # Arquivo obrigatório para o funcionamento do Docker/testes, contém as variáveis de ambiente
+├── composer.json                       # Contém as dependências necessárias do projeto
+├── composer.lock                       # Contém as versões que devem ser instaladas
+├── docker-compose.yml                  # Contém os objetos utilizados para subida do ambiente de testes
+└── ...
+```
+---
 ## Exemplos
 
 A pasta `examples` contém exemplos de cada request que pode ser realizada e podem ser executadas via php no terminal:
