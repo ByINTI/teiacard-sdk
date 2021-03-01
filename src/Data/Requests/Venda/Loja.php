@@ -2,8 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Loja extends DataTransferObject
 {
@@ -35,7 +35,7 @@ class Loja extends DataTransferObject
      * Size range: 14
      * Type: Numeric
      *
-     * @var int
+     * @var string
      */
     private $inscricao_numero;
 
@@ -57,12 +57,14 @@ class Loja extends DataTransferObject
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
+     *
      * @return Loja
      */
     public function setId(int $id): Loja
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -75,31 +77,34 @@ class Loja extends DataTransferObject
     }
 
     /**
-     * @param int $inscricao_tipo
+     * @param  int  $inscricao_tipo
+     *
      * @return Loja
      */
     public function setInscricaoTipo(int $inscricao_tipo): Loja
     {
         $this->inscricao_tipo = $inscricao_tipo;
+
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getInscricaoNumero(): int
+    public function getInscricaoNumero(): string
     {
         return $this->inscricao_numero;
     }
 
     /**
-     * @param int $inscricao_numero
+     * @param  string  $inscricao_numero
+     *
      * @return Loja
-     * TODO: RETORNAR PARA INT
      */
-    public function setInscricaoNumero($inscricao_numero): Loja
+    public function setInscricaoNumero(string $inscricao_numero): Loja
     {
         $this->inscricao_numero = $inscricao_numero;
+
         return $this;
     }
 
@@ -112,22 +117,26 @@ class Loja extends DataTransferObject
     }
 
     /**
-     * @param Venda[] $vendas
+     * @param  Venda[]  $vendas
+     *
      * @return Loja
      */
     public function setVendas(array $vendas): Loja
     {
         $this->vendas = $vendas;
+
         return $this;
     }
 
     /**
-     * @param Venda $venda
+     * @param  Venda  $venda
+     *
      * @return Loja
      */
     public function addVenda(Venda $venda): Loja
     {
         $this->vendas[] = $venda;
+
         return $this;
     }
 }

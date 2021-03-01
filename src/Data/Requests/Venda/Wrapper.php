@@ -2,8 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Wrapper extends DataTransferObject
 {
@@ -27,22 +27,26 @@ class Wrapper extends DataTransferObject
     }
 
     /**
-     * @param Empresa[] $empresas
+     * @param  Empresa[]  $empresas
+     *
      * @return $this
      */
     public function setEmpresas(array $empresas): Wrapper
     {
         $this->empresas = $empresas;
+
         return $this;
     }
 
     /**
-     * @param Empresa $parcela
+     * @param  Empresa  $parcela
+     *
      * @return $this
      */
     public function addEmpresa(Empresa $parcela): Wrapper
     {
         $this->empresas[] = $parcela;
+
         return $this;
     }
 }

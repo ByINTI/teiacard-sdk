@@ -3,7 +3,6 @@
 namespace TeiaCardSdk;
 
 use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
 use TeiaCardSdk\Endpoints\Autenticacao\Autenticacao;
@@ -24,10 +23,10 @@ use Throwable;
 
 class Client
 {
-    /** @var string  */
+    /** @var string */
     private const BASE_URI_PROD = 'https://api.saferedi.nteia.com/v1/';
 
-    /** @var string  */
+    /** @var string */
     private const BASE_URI_HMG = 'https://api.sandbox.saferedi.nteia.com/v1/';
 
     /** @var string */
@@ -75,7 +74,7 @@ class Client
     /** @var Venda */
     private $venda;
 
-    public $container;
+//    public $container;
 
     public function __construct(string $accessToken = null, float $timeout = 5.0)
     {
@@ -90,19 +89,18 @@ class Client
             $this->token = $accessToken;
         }
 
-        $this->container = [];
-        $history = Middleware::history($this->container);
-
-        $stack = HandlerStack::create();
-        // Add the history middleware to the handler stack.
-        $stack->push($history);
-
+//        $this->container = [];
+//        $history         = Middleware::history($this->container);
+//
+//        $stack = HandlerStack::create();
+//        // Add the history middleware to the handler stack.
+//        $stack->push($history);
 
         $options = [
             'base_uri'        => self::BASE_URI_HMG,
             'timeout'         => $timeout,
             'connect_timeout' => $timeout,
-            'handler' => $stack,
+//            'handler'         => $stack,
         ];
 
         $this->http = new HttpClient($options);
@@ -123,9 +121,10 @@ class Client
     }
 
     /**
-     * @param string $method
-     * @param string $uri
-     * @param array $options
+     * @param  string  $method
+     * @param  string  $uri
+     * @param  array   $options
+     *
      * @return array
      * @throws TeiaCardBaseException
      */
@@ -139,54 +138,25 @@ class Client
                 $uri,
                 $options
             );
-
-            foreach ($this->container as $transaction) {
-                echo (string) $transaction['request']->getBody();
-            }
-
-            $teste = $response->getBody()->getContents();
-
-            echo PHP_EOL . PHP_EOL . $teste . PHP_EOL . PHP_EOL;
-
-//            die('FIM');
-
-            return ResponseHandler::success($teste);
-//            return ResponseHandler::success($response->getBody()->getContents());
-//        } catch (Throwable $exception) {
+            return ResponseHandler::success($response->getBody()->getContents());
         } catch (Throwable $exception) {
-//            foreach ($this->container as $transaction) {
-////                echo $transaction['request']->getMethod();
-//                echo (string) $transaction['request']->getBody();
-//            }
-
-//            $teste = $exception->getResponse()->getBody()->getContents();
-
-//            echo PHP_EOL . PHP_EOL . 'TESTE - ' . $teste . PHP_EOL . PHP_EOL;
-
-
-//            die($exception->getTraceAsString());
-//            die($exception->getMessage());
             throw ResponseHandler::failure($exception);
-//        } catch (Throwable $e) {
-//            die("\ndeu merda grande... - {$e->getMessage()} \n\n");
         }
     }
 
     /**
-     * @param array $options
+     * @param  array  $options
+     *
      * @return array
      */
     private function mergeOptions(array $options = []): array
     {
         $baseOptions = [
             'headers' => [
-                'Accept' => 'application/json',
+                'Accept'       => 'application/json',
                 'Content-Type' => 'application/json',
-            ]
+            ],
         ];
-
-        // TODO: Colocar em uma condição
-        $options['debug'] = true;
 
         if ($this->token) {
             $baseOptions['headers']['Authorization'] = 'Bearer ' . $this->token;
@@ -198,6 +168,7 @@ class Client
     public function setToken(string $token): Client
     {
         $this->token = $token;
+
         return $this;
     }
 

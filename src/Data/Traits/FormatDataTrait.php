@@ -7,7 +7,8 @@ use TeiaCardSdk\Data\Contracts\DataInterface;
 trait FormatDataTrait
 {
     /**
-     * @param array $data
+     * @param  array  $data
+     *
      * @return DataInterface
      */
     public static function createFromArray(array $data): DataInterface

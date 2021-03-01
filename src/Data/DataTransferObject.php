@@ -16,18 +16,20 @@ abstract class DataTransferObject implements DataInterface
     public function toJson(): string
     {
         try {
-            return json_encode($this->toArray(), JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION);
+            return json_encode(
+                $this->toArray(),
+                JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRESERVE_ZERO_FRACTION
+            );
         } catch (JsonException $e) {
             throw new TeiaCardBaseException('Error encoding to JSON', $e->getMessage(), $e->getCode(), $e);
         }
     }
 
+    /**
+     * @return array
+     */
     public function toArray(): array
     {
-//        $teste = collect($this);
-//        print_r($teste->toJson(JSON_PRETTY_PRINT));
-//        die('oi');
-
         $array = [];
 
         $class = new ReflectionClass(static::class);

@@ -4,21 +4,21 @@ namespace TeiaCardSdk\Endpoints\Autenticacao;
 
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Collection;
-use JsonException;
 use TeiaCardSdk\Data\Requests\Autenticacao\Credenciais;
 use TeiaCardSdk\Endpoints\Endpoint;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 use TeiaCardSdk\Routes;
-use Throwable;
 
 /**
  * Class Authentication
+ *
  * @package TeiaCardSdk
  */
 class Autenticacao extends Endpoint
 {
     /**
-     * @param Credenciais $payload
+     * @param  Credenciais  $payload
+     *
      * @return Collection
      * @throws TeiaCardBaseException
      */

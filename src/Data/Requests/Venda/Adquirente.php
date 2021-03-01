@@ -2,8 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Adquirente extends DataTransferObject
 {
@@ -36,12 +36,14 @@ class Adquirente extends DataTransferObject
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
+     *
      * @return Adquirente
      */
     public function setId(int $id): Adquirente
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -54,12 +56,14 @@ class Adquirente extends DataTransferObject
     }
 
     /**
-     * @param Estabelecimento $estabelecimento
+     * @param  Estabelecimento  $estabelecimento
+     *
      * @return Adquirente
      */
     public function setEstabelecimento(Estabelecimento $estabelecimento): Adquirente
     {
         $this->estabelecimento = $estabelecimento;
+
         return $this;
     }
 }

@@ -2,11 +2,12 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 /**
  * Class Empresa
+ *
  * @package TeiaCardSdk\Data\Requests\Sale
  */
 class Empresa extends DataTransferObject
@@ -22,6 +23,7 @@ class Empresa extends DataTransferObject
      * @var int
      */
     private $id;
+
     /**
      * Nome da empresa
      *
@@ -32,6 +34,7 @@ class Empresa extends DataTransferObject
      * @var string|null
      */
     private $nome;
+
     /**
      * Enumerador Tipo de Inscrição
      *
@@ -40,6 +43,7 @@ class Empresa extends DataTransferObject
      * @var int
      */
     private $inscricao_tipo;
+
     /**
      * Numero de inscrição (CNPJ, CPF, Outros). Sem pontuação.
      *
@@ -47,9 +51,10 @@ class Empresa extends DataTransferObject
      * Size range: 14
      * Type: Numeric
      *
-     * @var int
+     * @var string
      */
     private $inscricao_numero;
+
     /**
      * Lista de Lojas
      *
@@ -68,12 +73,14 @@ class Empresa extends DataTransferObject
     }
 
     /**
-     * @param int $id
+     * @param  int  $id
+     *
      * @return Empresa
      */
     public function setId(int $id): Empresa
     {
         $this->id = $id;
+
         return $this;
     }
 
@@ -86,12 +93,14 @@ class Empresa extends DataTransferObject
     }
 
     /**
-     * @param string|null $nome
+     * @param  string|null  $nome
+     *
      * @return $this
      */
     public function setNome(?string $nome): Empresa
     {
         $this->nome = $nome;
+
         return $this;
     }
 
@@ -104,31 +113,34 @@ class Empresa extends DataTransferObject
     }
 
     /**
-     * @param int $inscricao_tipo
+     * @param  int  $inscricao_tipo
+     *
      * @return Empresa
      */
     public function setInscricaoTipo(int $inscricao_tipo): Empresa
     {
         $this->inscricao_tipo = $inscricao_tipo;
+
         return $this;
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function getInscricaoNumero(): int
+    public function getInscricaoNumero(): string
     {
         return $this->inscricao_numero;
     }
 
     /**
-     * @param int $inscricao_numero
+     * @param  string  $inscricao_numero
+     *
      * @return Empresa
-     * TODO: RETORNAR PARA INT
      */
-    public function setInscricaoNumero($inscricao_numero): Empresa
+    public function setInscricaoNumero(string $inscricao_numero): Empresa
     {
         $this->inscricao_numero = $inscricao_numero;
+
         return $this;
     }
 
@@ -141,18 +153,21 @@ class Empresa extends DataTransferObject
     }
 
     /**
-     * @param Loja[] $lojas
+     * @param  Loja[]  $lojas
+     *
      * @return Empresa
      */
     public function setLojas(array $lojas): Empresa
     {
         $this->lojas = $lojas;
+
         return $this;
     }
 
     public function addLoja(Loja $loja): Empresa
     {
         $this->lojas[] = $loja;
+
         return $this;
     }
 }

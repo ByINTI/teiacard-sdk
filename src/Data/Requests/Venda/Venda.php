@@ -2,8 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Venda extends DataTransferObject
 {
@@ -225,12 +225,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param Adquirente $adquirente
+     * @param  Adquirente  $adquirente
+     *
      * @return Venda
      */
     public function setAdquirente(Adquirente $adquirente): Venda
     {
         $this->adquirente = $adquirente;
+
         return $this;
     }
 
@@ -243,12 +245,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param Cartao $cartao
+     * @param  Cartao  $cartao
+     *
      * @return Venda
      */
     public function setCartao(Cartao $cartao): Venda
     {
         $this->cartao = $cartao;
+
         return $this;
     }
 
@@ -261,12 +265,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param int $servico_tipo
+     * @param  int  $servico_tipo
+     *
      * @return Venda
      */
     public function setServicoTipo(int $servico_tipo): Venda
     {
         $this->servico_tipo = $servico_tipo;
+
         return $this;
     }
 
@@ -279,12 +285,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $caixa_numero
+     * @param  string|null  $caixa_numero
+     *
      * @return $this
      */
     public function setCaixaNumero(?string $caixa_numero): Venda
     {
         $this->caixa_numero = $caixa_numero;
+
         return $this;
     }
 
@@ -297,12 +305,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $pedido_numero
+     * @param  string|null  $pedido_numero
+     *
      * @return $this
      */
     public function setPedidoNumero(?string $pedido_numero): Venda
     {
         $this->pedido_numero = $pedido_numero;
+
         return $this;
     }
 
@@ -315,12 +325,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param float $taxa
+     * @param  float  $taxa
+     *
      * @return Venda
      */
     public function setTaxa(float $taxa): Venda
     {
         $this->taxa = $taxa;
+
         return $this;
     }
 
@@ -333,12 +345,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $nsu
+     * @param  string|null  $nsu
+     *
      * @return $this
      */
     public function setNsu(?string $nsu): Venda
     {
         $this->nsu = $nsu;
+
         return $this;
     }
 
@@ -351,12 +365,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $autorizacao
+     * @param  string|null  $autorizacao
+     *
      * @return $this
      */
     public function setAutorizacao(?string $autorizacao): Venda
     {
         $this->autorizacao = $autorizacao;
+
         return $this;
     }
 
@@ -369,12 +385,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string $venda_data_hora
+     * @param  string  $venda_data_hora
+     *
      * @return Venda
      */
     public function setVendaDataHora(string $venda_data_hora): Venda
     {
         $this->venda_data_hora = $venda_data_hora;
+
         return $this;
     }
 
@@ -387,12 +405,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param float $valor_bruto
+     * @param  float  $valor_bruto
+     *
      * @return Venda
      */
     public function setValorBruto(float $valor_bruto): Venda
     {
         $this->valor_bruto = $valor_bruto;
+
         return $this;
     }
 
@@ -405,12 +425,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param int $plano
+     * @param  int  $plano
+     *
      * @return Venda
      */
     public function setPlano(int $plano): Venda
     {
         $this->plano = $plano;
+
         return $this;
     }
 
@@ -423,12 +445,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param int $bandeira
+     * @param  int  $bandeira
+     *
      * @return Venda
      */
     public function setBandeira(int $bandeira): Venda
     {
         $this->bandeira = $bandeira;
+
         return $this;
     }
 
@@ -441,12 +465,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $caixa_nome_operador
+     * @param  string|null  $caixa_nome_operador
+     *
      * @return $this
      */
     public function setCaixaNomeOperador(?string $caixa_nome_operador): Venda
     {
         $this->caixa_nome_operador = $caixa_nome_operador;
+
         return $this;
     }
 
@@ -459,12 +485,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param bool $programa_promocional
+     * @param  bool  $programa_promocional
+     *
      * @return Venda
      */
     public function setProgramaPromocional(bool $programa_promocional): Venda
     {
         $this->programa_promocional = $programa_promocional;
+
         return $this;
     }
 
@@ -477,12 +505,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param int $meio_captura
+     * @param  int  $meio_captura
+     *
      * @return Venda
      */
     public function setMeioCaptura(int $meio_captura): Venda
     {
         $this->meio_captura = $meio_captura;
+
         return $this;
     }
 
@@ -495,12 +525,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param int $voucher
+     * @param  int  $voucher
+     *
      * @return Venda
      */
     public function setVoucher(int $voucher): Venda
     {
         $this->voucher = $voucher;
+
         return $this;
     }
 
@@ -513,13 +545,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string $gateway_pedido_id
+     * @param  string  $gateway_pedido_id
+     *
      * @return Venda
-     * TODO: VOLTAR PARA STRING
      */
-    public function setGatewayPedidoId($gateway_pedido_id): Venda
+    public function setGatewayPedidoId(string $gateway_pedido_id): Venda
     {
         $this->gateway_pedido_id = $gateway_pedido_id;
+
         return $this;
     }
 
@@ -532,12 +565,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $operadora_transporte
+     * @param  string|null  $operadora_transporte
+     *
      * @return $this
      */
     public function setOperadoraTransporte(?string $operadora_transporte): Venda
     {
         $this->operadora_transporte = $operadora_transporte;
+
         return $this;
     }
 
@@ -550,12 +585,14 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param string|null $chave_erp
+     * @param  string|null  $chave_erp
+     *
      * @return $this
      */
     public function setChaveErp(?string $chave_erp): Venda
     {
         $this->chave_erp = $chave_erp;
+
         return $this;
     }
 
@@ -568,22 +605,26 @@ class Venda extends DataTransferObject
     }
 
     /**
-     * @param Parcela[]|null $parcelas
+     * @param  Parcela[]|null  $parcelas
+     *
      * @return $this
      */
     public function setParcelas(?array $parcelas): Venda
     {
         $this->parcelas = $parcelas;
+
         return $this;
     }
 
     /**
-     * @param Parcela $parcela
+     * @param  Parcela  $parcela
+     *
      * @return $this
      */
     public function addParcela(Parcela $parcela): Venda
     {
         $this->parcelas[] = $parcela;
+
         return $this;
     }
 }

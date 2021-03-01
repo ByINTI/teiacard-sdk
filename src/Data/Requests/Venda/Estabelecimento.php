@@ -2,9 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Contracts\DataInterface;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Estabelecimento extends DataTransferObject
 {
@@ -16,7 +15,7 @@ class Estabelecimento extends DataTransferObject
      * Size range: 18
      * Type: Numeric
      *
-     * @var int
+     * @var string
      */
     private $numero;
 
@@ -30,21 +29,22 @@ class Estabelecimento extends DataTransferObject
     private $maquineta;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getNumero(): int
+    public function getNumero(): string
     {
         return $this->numero;
     }
 
     /**
-     * @param int $numero
+     * @param  string  $numero
+     *
      * @return Estabelecimento
-     * TODO: VOLTAR PARA INT
      */
-    public function setNumero($numero): Estabelecimento
+    public function setNumero(string $numero): Estabelecimento
     {
         $this->numero = $numero;
+
         return $this;
     }
 
@@ -57,12 +57,14 @@ class Estabelecimento extends DataTransferObject
     }
 
     /**
-     * @param Maquineta $maquineta
+     * @param  Maquineta  $maquineta
+     *
      * @return Estabelecimento
      */
     public function setMaquineta(Maquineta $maquineta): Estabelecimento
     {
         $this->maquineta = $maquineta;
+
         return $this;
     }
 }

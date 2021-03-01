@@ -2,9 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Contracts\DataInterface;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Cartao extends DataTransferObject
 {
@@ -42,12 +41,14 @@ class Cartao extends DataTransferObject
     }
 
     /**
-     * @param string|null $numero_truncado
+     * @param  string|null  $numero_truncado
+     *
      * @return $this
      */
     public function setNumeroTruncado(?string $numero_truncado): Cartao
     {
         $this->numero_truncado = $numero_truncado;
+
         return $this;
     }
 
@@ -60,12 +61,14 @@ class Cartao extends DataTransferObject
     }
 
     /**
-     * @param String $nome_proprietario
+     * @param  String  $nome_proprietario
+     *
      * @return Cartao
      */
     public function setNomeProprietario(string $nome_proprietario): Cartao
     {
         $this->nome_proprietario = $nome_proprietario;
+
         return $this;
     }
 }

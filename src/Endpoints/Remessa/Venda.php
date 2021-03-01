@@ -2,35 +2,18 @@
 
 namespace TeiaCardSdk\Endpoints\Remessa;
 
-use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\RequestOptions;
 use Illuminate\Support\Collection;
-use TeiaCardSdk\Data\Contracts\DataInterface;
-use TeiaCardSdk\Data\Requests\Venda\Empresa;
 use TeiaCardSdk\Data\Requests\Venda\Wrapper;
 use TeiaCardSdk\Endpoints\Endpoint;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 use TeiaCardSdk\Routes;
-use Throwable;
 
 class Venda extends Endpoint
 {
     /**
-     * @return DataInterface
-     * @throws Throwable
-     */
-//    public function send(): DataInterface
-//    {
-//        $response = $this->client->request(
-//            self::POST,
-//            Routes::sales()->send()
-//        );
-//
-//        return AcquirerResponse::createFromArray($response);
-//    }
-
-    /**
-     * @param int $id
+     * @param  int  $id
+     *
      * @return Collection
      * @throws TeiaCardBaseException
      */
@@ -41,15 +24,12 @@ class Venda extends Endpoint
             Routes::sales()->status($id)
         );
 
-        print_r($a);
-        print_r("\nUOUFILHOTE\n");
-        die;
-
-        return $a;
+        return collect($a);
     }
 
     /**
-     * @param Wrapper $empresas
+     * @param  Wrapper  $empresas
+     *
      * @return Collection
      * @throws TeiaCardBaseException
      */
@@ -62,7 +42,5 @@ class Venda extends Endpoint
         );
 
         return collect($response);
-//        print_r('AQUI PORRA: ', $t);
-//        die;
     }
 }

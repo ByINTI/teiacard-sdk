@@ -2,8 +2,8 @@
 
 namespace TeiaCardSdk\Data\Requests\Venda;
 
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 use TeiaCardSdk\Data\DataTransferObject;
+use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Parcela extends DataTransferObject
 {
@@ -71,12 +71,14 @@ class Parcela extends DataTransferObject
     }
 
     /**
-     * @param int $numero
+     * @param  int  $numero
+     *
      * @return Parcela
      */
     public function setNumero(int $numero): Parcela
     {
         $this->numero = $numero;
+
         return $this;
     }
 
@@ -89,12 +91,14 @@ class Parcela extends DataTransferObject
     }
 
     /**
-     * @param string $data_vencimento
+     * @param  string  $data_vencimento
+     *
      * @return Parcela
      */
     public function setDataVencimento(string $data_vencimento): Parcela
     {
         $this->data_vencimento = $data_vencimento;
+
         return $this;
     }
 
@@ -107,12 +111,14 @@ class Parcela extends DataTransferObject
     }
 
     /**
-     * @param float $valor_bruto
+     * @param  float  $valor_bruto
+     *
      * @return Parcela
      */
     public function setValorBruto(float $valor_bruto): Parcela
     {
         $this->valor_bruto = $valor_bruto;
+
         return $this;
     }
 
@@ -125,12 +131,14 @@ class Parcela extends DataTransferObject
     }
 
     /**
-     * @param float $valor_liquido
+     * @param  float  $valor_liquido
+     *
      * @return Parcela
      */
     public function setValorLiquido(float $valor_liquido): Parcela
     {
         $this->valor_liquido = $valor_liquido;
+
         return $this;
     }
 
@@ -143,12 +151,14 @@ class Parcela extends DataTransferObject
     }
 
     /**
-     * @param string $chave_parcela
+     * @param  string  $chave_parcela
+     *
      * @return Parcela
      */
     public function setChaveParcela(string $chave_parcela): Parcela
     {
         $this->chave_parcela = $chave_parcela;
+
         return $this;
     }
 }

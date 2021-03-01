@@ -8,6 +8,7 @@ use stdClass;
 
 /**
  * Class Anonymous
+ *
  * @package TeiaCardSdk
  *
  * @method Collection login()
@@ -18,8 +19,9 @@ use stdClass;
 class Anonymous extends stdClass
 {
     /**
-     * @param string $methodName
-     * @param array $params
+     * @param  string  $methodName
+     * @param  array   $params
+     *
      * @return mixed
      */
     public function __call(string $methodName, array $params)
