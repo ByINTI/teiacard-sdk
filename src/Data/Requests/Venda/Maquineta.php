@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Maquineta extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Enumerador Tipo de Maquineta
      *

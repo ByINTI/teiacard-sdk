@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Cartao extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Numero do cartão truncado
      *

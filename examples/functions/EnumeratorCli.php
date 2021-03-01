@@ -1,6 +1,6 @@
 <?php
 
-function enumeratorTest()
+function enumeratorTest(): array
 {
     $AVAILABLE_ENUMERATORS = [
         1  => 'adquirentes',
@@ -40,8 +40,6 @@ function enumeratorTest()
     $option = trim(fgets(STDIN));
 
     if ($option === "0") {
-        echo "\n\nALL\n\n";
-
         $returnArr = [];
 
         foreach ($AVAILABLE_ENUMERATORS as $key => $value) {

@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Parcela extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Número da parcela
      *

@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Autenticacao;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Credenciais extends DataTransferObject
 {
-//    use FormatDataTrait;
-
     /** @var string */
     private $client_id;
 
@@ -33,14 +30,6 @@ class Credenciais extends DataTransferObject
     private const GRANT_TYPE_REFRESH_TOKEN = 'refresh_token';
 
     /**
-     * @return string
-     */
-    public function getClientId(): string
-    {
-        return $this->client_id;
-    }
-
-    /**
      * @param  string  $client_id
      *
      * @return Credenciais
@@ -50,14 +39,6 @@ class Credenciais extends DataTransferObject
         $this->client_id = $client_id;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getClientSecret(): string
-    {
-        return $this->client_secret;
     }
 
     /**
@@ -73,14 +54,6 @@ class Credenciais extends DataTransferObject
     }
 
     /**
-     * @return string
-     */
-    public function getUsername(): string
-    {
-        return $this->username;
-    }
-
-    /**
      * @param  string  $username
      *
      * @return Credenciais
@@ -93,14 +66,6 @@ class Credenciais extends DataTransferObject
     }
 
     /**
-     * @return string
-     */
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
-
-    /**
      * @param  string  $password
      *
      * @return Credenciais
@@ -110,14 +75,6 @@ class Credenciais extends DataTransferObject
         $this->password = $password;
 
         return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getRefreshToken(): string
-    {
-        return $this->refresh_token;
     }
 
     /**

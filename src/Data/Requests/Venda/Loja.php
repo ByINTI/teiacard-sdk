@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Loja extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Codigo da Loja
      *

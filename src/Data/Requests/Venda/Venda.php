@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Venda extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Objeto Adquirente
      *

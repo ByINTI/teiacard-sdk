@@ -3,7 +3,6 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 /**
  * Class Empresa
@@ -12,8 +11,6 @@ use TeiaCardSdk\Data\Traits\FormatDataTrait;
  */
 class Empresa extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Codigo da empresa
      *

@@ -3,8 +3,6 @@
 namespace TeiaCardSdk;
 
 use GuzzleHttp\Client as HttpClient;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
 use TeiaCardSdk\Endpoints\Autenticacao\Autenticacao;
 use TeiaCardSdk\Endpoints\Enumerador\Adquirente;
 use TeiaCardSdk\Endpoints\Enumerador\Bandeira;

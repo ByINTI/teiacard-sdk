@@ -3,12 +3,9 @@
 namespace TeiaCardSdk\Data\Requests\Venda;
 
 use TeiaCardSdk\Data\DataTransferObject;
-use TeiaCardSdk\Data\Traits\FormatDataTrait;
 
 class Wrapper extends DataTransferObject
 {
-    use FormatDataTrait;
-
     /**
      * Lista de Empresas
      *

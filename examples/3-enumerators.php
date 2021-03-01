@@ -53,7 +53,7 @@ function process($functionName, $enumeratorName) {
     $redis = new Redis() or die("Cannot load Redis module.");
     $redis->connect('redis');
 
-    echo "\n\n# Inicio do teste de listagem de {$enumeratorName}\n";
+    echo "\n# Inicio do teste de listagem de {$enumeratorName}\n";
 
     $token = $redis->get('teia-card-access-token') ?: null;
 
@@ -98,4 +98,5 @@ function process($functionName, $enumeratorName) {
     echo $list->toJson();
 
     echo "\n\n# Teste de listagem de {$enumeratorName} realizado com sucesso!\n\n";
+    echo "############################################################################################\n";
 }
