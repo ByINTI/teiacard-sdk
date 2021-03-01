@@ -26,6 +26,7 @@ class Credenciais extends DataTransferObject
 
     /** @var string */
     private const GRANT_TYPE_PASSWORD = 'password';
+
     /** @var string */
     private const GRANT_TYPE_REFRESH_TOKEN = 'refresh_token';
 
