@@ -53,15 +53,20 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 │   |    |    └─ Venda.php              # Classe responsável por enviar as requests de Venda
 │   |    └─ Endpoint.php                # Classe abstrata para todos os Endpoints
 |   |
-│   └─ Exceptions                       # Contém todas as exceções que podem ser enviadas pelo SDK
-│        ├─ TeiaCardBaseException.php   # Exceção base do SDK, todos os erros serão lançadas dela ou de uma exceção filha
-│        └─ TeiaCardHttpException.php   # Exceção que indica que o erro veio de uma resposta da API e não do SDK em si
-|  
+│   ├─ Exceptions                       # Contém todas as exceções que podem ser enviadas pelo SDK
+|   |    ├─ TeiaCardBaseException.php   # Exceção base do SDK, todos os erros serão lançadas dela ou de uma exceção filha
+|   |    └─ TeiaCardHttpException.php   # Exceção que indica que o erro veio de uma resposta da API e não do SDK em si
+|   |
+|   ├─ Anonymous.php                    # Helper utilizado para mapear as rotas aos endpoints
+|   ├─ Client.php                       # Client de comunicação com a API, um wrapper do Guzzle
+|   ├─ ResponseHandler.php              # Classe responsável por tratar as respostas, retornando sucesso ou disparando as exceções do SDK
+|   └─ Routes.php                       # Arquivo que contém as rotas da API
+|
 ├── .env                                # Arquivo obrigatório para o funcionamento do Docker/testes, contém as variáveis de ambiente
+├── ...
 ├── composer.json                       # Contém as dependências necessárias do projeto
 ├── composer.lock                       # Contém as versões que devem ser instaladas
-├── docker-compose.yml                  # Contém os objetos utilizados para subida do ambiente de testes
-└── ...
+└── docker-compose.yml                  # Contém os objetos utilizados para subida do ambiente de testes
 ```
 ---
 ## Exemplos
