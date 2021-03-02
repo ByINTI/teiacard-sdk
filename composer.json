@@ -4,9 +4,7 @@
   "type": "library",
   "require": {
     "php": ">=7.3",
-    "ext-json": "*",
-    "ext-redis": "*",
-    "guzzlehttp/guzzle": "~6",
+    "guzzlehttp/guzzle": "~6.5",
     "illuminate/collections": "^8.26"
   },
   "authors": [
