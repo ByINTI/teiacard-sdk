@@ -1,0 +1,24 @@
+{
+  "name": "byinti/teiacard-sdk",
+  "description": "SDK para comunicação com a API Teia Card",
+  "type": "library",
+  "require": {
+    "php": ">=7.3",
+    "ext-json": "*",
+    "ext-redis": "*",
+    "guzzlehttp/guzzle": "~6",
+    "illuminate/collections": "^8.26"
+  },
+  "authors": [
+    {
+      "name": "Thiago Meireles da Silva",
+      "email": "thiagom@byinti.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "TeiaCardSdk\\": "src/"
+    }
+  }
+}
