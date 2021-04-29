@@ -7,6 +7,7 @@ use TeiaCardSdk\Endpoints\Autenticacao\Autenticacao;
 use TeiaCardSdk\Endpoints\Enumerador\Adquirente;
 use TeiaCardSdk\Endpoints\Enumerador\Bandeira;
 use TeiaCardSdk\Endpoints\Enumerador\CampoDivergente;
+use TeiaCardSdk\Endpoints\Enumerador\MeioCaptura;
 use TeiaCardSdk\Endpoints\Enumerador\MotivoEstorno;
 use TeiaCardSdk\Endpoints\Enumerador\MotivoStatusConciliacao;
 use TeiaCardSdk\Endpoints\Enumerador\TipoAjuste;
@@ -23,7 +24,6 @@ class Client
 {
     /** @var string */
     private const BASE_URI_PROD = 'https://api.saferedi.nteia.com/v1/';
-
     /** @var string */
     private const BASE_URI_HMG = 'https://api.sandbox.saferedi.nteia.com/v1/';
 
@@ -69,6 +69,9 @@ class Client
     /** @var Voucher */
     private $voucher;
 
+    /** @var MeioCaptura */
+    private $meioCaptura;
+
     /** @var Venda */
     private $venda;
 
@@ -97,6 +100,7 @@ class Client
         $this->tipoMaquineta           = new TipoMaquineta($this);
         $this->tipoServico             = new TipoServico($this);
         $this->voucher                 = new Voucher($this);
+        $this->meioCaptura             = new MeioCaptura($this);
         $this->venda                   = new Venda($this);
     }
 
@@ -118,6 +122,7 @@ class Client
                 $uri,
                 $options
             );
+
             return ResponseHandler::success($response->getBody()->getContents());
         } catch (Throwable $exception) {
             throw ResponseHandler::failure($exception);
@@ -256,6 +261,14 @@ class Client
     public function voucher(): Voucher
     {
         return $this->voucher;
+    }
+
+    /**
+     * @return MeioCaptura
+     */
+    public function meioCaptura(): MeioCaptura
+    {
+        return $this->meioCaptura;
     }
 
     /**

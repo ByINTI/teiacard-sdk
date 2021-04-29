@@ -14,6 +14,7 @@ function enumeratorTest(): array
         9  => 'tipo-maquineta',
         10 => 'tipo-servico',
         11 => 'voucher',
+        12 => 'meio-captura',
     ];
 
     echo "\n   ############################################\n";
@@ -32,6 +33,7 @@ function enumeratorTest(): array
     echo "   #       9 - Tipo Maquineta                 #\n";
     echo "   #      10 - Tipo Servico                   #\n";
     echo "   #      11 - Voucher                        #\n";
+    echo "   #      12 - Meio Captura                   #\n";
     echo "   #                                          #\n";
     echo "   ############################################\n";
 

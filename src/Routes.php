@@ -169,6 +169,20 @@ class Routes
         return $anonymous;
     }
 
+    /**
+     * @return Anonymous
+     */
+    public static function meioCaptura(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'enum/meio-captura';
+        };
+
+        return $anonymous;
+    }
+
     public static function sales(): Anonymous
     {
         $anonymous = new Anonymous();
