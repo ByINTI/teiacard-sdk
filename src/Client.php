@@ -17,6 +17,7 @@ use TeiaCardSdk\Endpoints\Enumerador\TipoMaquineta;
 use TeiaCardSdk\Endpoints\Enumerador\TipoServico;
 use TeiaCardSdk\Endpoints\Enumerador\Voucher;
 use TeiaCardSdk\Endpoints\Remessa\Venda;
+use TeiaCardSdk\Endpoints\Retorno\Empresa;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 use Throwable;
 
@@ -72,6 +73,9 @@ class Client
     /** @var MeioCaptura */
     private $meioCaptura;
 
+    /** @var Empresa */
+    private $empresa;
+
     /** @var Venda */
     private $venda;
 
@@ -101,6 +105,7 @@ class Client
         $this->tipoServico             = new TipoServico($this);
         $this->voucher                 = new Voucher($this);
         $this->meioCaptura             = new MeioCaptura($this);
+        $this->empresa                 = new Empresa($this);
         $this->venda                   = new Venda($this);
     }
 
@@ -269,6 +274,14 @@ class Client
     public function meioCaptura(): MeioCaptura
     {
         return $this->meioCaptura;
+    }
+
+    /**
+     * @return Empresa
+     */
+    public function empresa(): Empresa
+    {
+        return $this->empresa;
     }
 
     /**

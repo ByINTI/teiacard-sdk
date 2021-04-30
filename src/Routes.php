@@ -183,6 +183,20 @@ class Routes
         return $anonymous;
     }
 
+    /**
+     * @return Anonymous
+     */
+    public static function empresa(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'retorno/empresas';
+        };
+
+        return $anonymous;
+    }
+
     public static function sales(): Anonymous
     {
         $anonymous = new Anonymous();
