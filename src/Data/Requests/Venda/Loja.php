@@ -46,6 +46,15 @@ class Loja extends DataTransferObject
     private $vendas;
 
     /**
+     * Lista de Ajustes
+     *
+     * Type: Object[]
+     *
+     * @var Ajuste[]
+     */
+    private $ajustes;
+
+    /**
      * @return int
      */
     public function getId(): int
@@ -134,6 +143,18 @@ class Loja extends DataTransferObject
     {
         $this->vendas[] = $venda;
 
+        return $this;
+    }
+
+    /**
+     * @param  Ajuste  $ajuste
+     *
+     * @return Loja
+     */
+    public function addAjuste(Ajuste $ajuste): Loja
+    {
+        $this->ajustes[] = $ajuste;
+        echo $this->ajustes;
         return $this;
     }
 }

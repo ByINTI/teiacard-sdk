@@ -16,6 +16,7 @@ use TeiaCardSdk\Endpoints\Enumerador\TipoInscricao;
 use TeiaCardSdk\Endpoints\Enumerador\TipoMaquineta;
 use TeiaCardSdk\Endpoints\Enumerador\TipoServico;
 use TeiaCardSdk\Endpoints\Enumerador\Voucher;
+use TeiaCardSdk\Endpoints\Remessa\Ajuste;
 use TeiaCardSdk\Endpoints\Remessa\Venda;
 use TeiaCardSdk\Endpoints\Retorno\Empresa;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
@@ -79,6 +80,9 @@ class Client
     /** @var Venda */
     private $venda;
 
+    /** @var Ajuste */
+    private $ajuste;
+
     public function __construct(bool $production = false, string $accessToken = null, float $timeout = 5.0)
     {
         if ($accessToken) {
@@ -107,6 +111,7 @@ class Client
         $this->meioCaptura             = new MeioCaptura($this);
         $this->empresa                 = new Empresa($this);
         $this->venda                   = new Venda($this);
+        $this->ajuste                  = new Ajuste($this);
     }
 
     /**
@@ -290,5 +295,13 @@ class Client
     public function vendas(): Venda
     {
         return $this->venda;
+    }
+
+    /**
+     * @return Ajuste
+     */
+    public function ajustes(): Ajuste
+    {
+        return $this->ajuste;
     }
 }
