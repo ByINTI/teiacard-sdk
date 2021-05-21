@@ -197,6 +197,9 @@ class Routes
         return $anonymous;
     }
 
+    /**
+     * @return Anonymous
+     */
     public static function sales(): Anonymous
     {
         $anonymous = new Anonymous();
@@ -207,6 +210,20 @@ class Routes
 
         $anonymous->status = static function (int $id) {
             return "remessa/venda/{$id}/status";
+        };
+
+        return $anonymous;
+    }
+
+    /**
+     * @return Anonymous
+     */
+    public static function ajusts(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->send = static function () {
+            return 'remessa/ajustes';
         };
 
         return $anonymous;
