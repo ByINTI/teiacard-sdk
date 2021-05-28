@@ -228,5 +228,33 @@ class Routes
 
         return $anonymous;
     }
+
+    /**
+     * @return Anonymous
+     */
+    public static function establishments(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'retorno/estabelecimentos';
+        };
+
+        return $anonymous;
+    }
+
+    /**
+     * @return Anonymous
+     */
+    public static function stores(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'retorno/lojas';
+        };
+
+        return $anonymous;
+    }
 }
 

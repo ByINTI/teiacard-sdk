@@ -19,6 +19,8 @@ use TeiaCardSdk\Endpoints\Enumerador\Voucher;
 use TeiaCardSdk\Endpoints\Remessa\Ajuste;
 use TeiaCardSdk\Endpoints\Remessa\Venda;
 use TeiaCardSdk\Endpoints\Retorno\Empresa;
+use TeiaCardSdk\Endpoints\Retorno\Estabelecimento;
+use TeiaCardSdk\Endpoints\Retorno\Loja;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 use Throwable;
 
@@ -83,6 +85,12 @@ class Client
     /** @var Ajuste */
     private $ajuste;
 
+    /** @var Estabelecimento */
+    private $estabelecimento;
+
+    /** @var Loja */
+    private $loja;
+
     public function __construct(bool $production = false, string $accessToken = null, float $timeout = 5.0)
     {
         if ($accessToken) {
@@ -112,6 +120,8 @@ class Client
         $this->empresa                 = new Empresa($this);
         $this->venda                   = new Venda($this);
         $this->ajuste                  = new Ajuste($this);
+        $this->estabelecimento         = new Estabelecimento($this);
+        $this->loja                    = new Loja($this);
     }
 
     /**
@@ -287,6 +297,22 @@ class Client
     public function empresa(): Empresa
     {
         return $this->empresa;
+    }
+
+    /**
+     * @return Estabelecimento
+     */
+    public function estabelecimento(): Estabelecimento
+    {
+        return $this->estabelecimento;
+    }
+
+    /**
+     * @return Loja
+     */
+    public function loja(): Loja
+    {
+        return $this->loja;
     }
 
     /**
