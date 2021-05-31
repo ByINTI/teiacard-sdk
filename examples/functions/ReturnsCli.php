@@ -5,6 +5,8 @@ function returnTest(): array
     echo "\n   ############################################\n";
     $AVAILABLE_RETURNS = [
         1  => 'empresa',
+        2  => 'estabelecimento',
+        3  => 'loja',
     ];
 
     echo "\n   ############################################\n";
@@ -14,6 +16,8 @@ function returnTest(): array
     echo "   #                                          #\n";
     echo "   #       0 - TODOS OS TESTES                #\n";
     echo "   #       1 - Empresas                       #\n";
+    echo "   #       2 - Estabelecimentos               #\n";
+    echo "   #       3 - Lojas                          #\n";
     echo "   #                                          #\n";
     echo "   ############################################\n";
 
