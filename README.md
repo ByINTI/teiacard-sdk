@@ -32,10 +32,10 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 │   ├─ Data                             # pasta contendo arquivos de configurações do nginx
 │   |    └─ Interfaces                  # arquivo básico de configuração do nginx
 │   |         └─ DataInterface.php      # interface básica para os objetos de entrada de dados
-│   | 
+│   |
 │   ├─ Requests
 │   |    ├─ Autenticacao
-│   |    |    └─ Credenciais.php        # DTO utilizado para envio no momento da autenticação com a Teia Card 
+│   |    |    └─ Credenciais.php        # DTO utilizado para envio no momento da autenticação com a Teia Card
 |   |    ├─ Venda
 |   |    |    ├─ Adquirente.php         # DTO utilizado para geração de dados de Adquirente no envio de vendas para a API
 |   |    |    ├─ Cartao.php             # DTO utilizado para geração de dados de Cartão no envio de vendas para a API
@@ -44,9 +44,9 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 |   |
 │   ├─ Endpoints                        # Classes com objetivo de enviar as requests para a API Teia Card. Sempre retornam Collection
 │   |    ├─ Autenticacao
-│   |    |    └─ Autenticacao.php       # Classe responsável por enviar as requests de autenticação 
+│   |    |    └─ Autenticacao.php       # Classe responsável por enviar as requests de autenticação
 │   |    ├─ Enumerador
-|   |    |    ├─ Adquirente.php         # Classe responsável por enviar as requests de enumerador de Adquirentes 
+|   |    |    ├─ Adquirente.php         # Classe responsável por enviar as requests de enumerador de Adquirentes
 |   |    |    ├─ Bandeira.php           # Classe responsável por enviar as requests de enumerador de Bandeiras
 │   |    |    └─ ...
 │   |    ├─ Remessa
@@ -81,13 +81,13 @@ Foi criado também um ambiente Docker para facilitar a utilização dos exemplos
 * No diretório do projeto, executar `docker-compose up -d --build`
 * Executar `docker-compose exec php-fpm bash` para entrar no container
 * Acessar a pasta examples `cd examples`
-* Executar o exemplo desejado. Exemplo:  
+* Executar o exemplo desejado. Exemplo:
 
     * Autenticar na Teia Card e salvar os tokens no Redis: `php examples/1-auth-login-password.php`
     * Listar Enumeradores: `php 3-enumerators.php`
       * Será apresentada uma lista de enumeradores para selecionar, inclusive uma opção para listar todos
     * Enviar uma nova Venda: `php 4-send-sale.php`
-  
+
 ---
 ### Exemplos de utilização
 
@@ -268,7 +268,7 @@ try {
 
     echo "\n# Criando objeto Cartao...\n";
     $cartao = new Cartao();
-    $cartao->setNomeProprietario('Thiago Meireles da Silva');
+    $cartao->setNomeProprietario('Nome do Proprietario');
     $cartao->setNumeroTruncado('4111XXXXXXXX1111');
 
     echo "\n# Criando objeto Venda...\n";
@@ -285,12 +285,12 @@ try {
           ->setValorBruto(5.32)
           ->setPlano(2)
           ->setBandeira(1)
-          ->setCaixaNomeOperador('Thiago Meireles da Silva')
+          ->setCaixaNomeOperador('Nome do Operador')
           ->setProgramaPromocional(false)
           ->setMeioCaptura(1)
           ->setVoucher(1)
           ->setGatewayPedidoId('3214')
-          ->setChaveErp('INTIBR-123');
+          ->setChaveErp('CHAVE-123');
 
     echo "\n# Adicionando objeto Venda a Loja...\n";
     $loja->addVenda($venda);
