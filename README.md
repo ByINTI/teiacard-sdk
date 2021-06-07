@@ -1,16 +1,17 @@
 # SDK Teia Card
 
-SDK criado com objetivo de facilitar a integração com a API da Teia Card: http://api.saferedi.nteia.com/api/documentation/
+SDK criado com objetivo de facilitar a integração com a API da Teia
+Card: http://api.saferedi.nteia.com/api/documentation/
 
 ## Dependências
+
 * PHP >= 7.3
 
-    #### Dependências utilizadas internamente
+  #### Dependências utilizadas internamente
     * [Guzzle v6](https://docs.guzzlephp.org/en/6.5/)
     * [Collections v8.26](https://github.com/illuminate/collections)
 
 ## Estrutura do Projeto
-
 
 ```
 |
@@ -31,16 +32,20 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 ├─ src
 │   ├─ Data                             # pasta contendo arquivos de configurações do nginx
 │   |    └─ Interfaces                  # arquivo básico de configuração do nginx
-│   |         └─ DataInterface.php      # interface básica para os objetos de entrada de dados
-│   |
-│   ├─ Requests
-│   |    ├─ Autenticacao
-│   |    |    └─ Credenciais.php        # DTO utilizado para envio no momento da autenticação com a Teia Card
-|   |    ├─ Venda
-|   |    |    ├─ Adquirente.php         # DTO utilizado para geração de dados de Adquirente no envio de vendas para a API
-|   |    |    ├─ Cartao.php             # DTO utilizado para geração de dados de Cartão no envio de vendas para a API
-│   |    |    └─ ...
-│   |    └─ DataTransferObject.php      # Classe abstrata para todos os DTOs
+│   |    |     └─ DataInterface.php      # interface básica para os objetos de entrada de dados
+│   |    └─ Requests
+│   |       ├─ Autenticacao
+│   |       |    └─ Credenciais.php        # DTO utilizado para envio no momento da autenticação com a Teia Card
+│   |       ├─ AjusteCancelamento
+│   |       |    └─ Ajuste.php             # DTO utilizado para envio de Ajustes (Cancelamentos)
+│   |       ├─ Venda
+│   |       |    ├─ Adquirente.php         # DTO utilizado para geração de dados de Adquirente no envio de vendas para a API
+│   |       |    ├─ Cartao.php             # DTO utilizado para geração de dados de Cartão no envio de vendas para a API
+│   |       |    └─ ...
+│   |       ├─ Parcela
+│   |       |    ├─ Parcela.php                # DTO utilizado para geração de dados de Parcela para consulta na API de parcelas consolidadas
+│   |       |    └─ ParcelaNaoConsolidada.php  # DTO utilizado para geração de dados de Parcela Não Consolidadas para consulta na API.
+│   ├─ DataTransferObject.php      # Classe abstrata para todos os DTOs
 |   |
 │   ├─ Endpoints                        # Classes com objetivo de enviar as requests para a API Teia Card. Sempre retornam Collection
 │   |    ├─ Autenticacao
@@ -51,6 +56,10 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 │   |    |    └─ ...
 │   |    ├─ Remessa
 │   |    |    └─ Venda.php              # Classe responsável por enviar as requests de Venda
+│   |    ├─ Retorno                     # Responsavel por consultas diversas dentro da API do Teia Card
+│   |    |    └─ AjusteCancelamento.php # Classe responsável por consultar os ajustes que foram enviados
+│   |    |    └─ Empresa.php             # Classe responsável por consultar as empresas cadastradas para o login
+│   |    |    └─ ...
 │   |    └─ Endpoint.php                # Classe abstrata para todos os Endpoints
 |   |
 │   ├─ Exceptions                       # Contém todas as exceções que podem ser enviadas pelo SDK
@@ -68,7 +77,9 @@ SDK criado com objetivo de facilitar a integração com a API da Teia Card: http
 ├── composer.lock                       # Contém as versões que devem ser instaladas
 └── docker-compose.yml                  # Contém os objetos utilizados para subida do ambiente de testes
 ```
+
 ---
+
 ## Exemplos
 
 A pasta `examples` contém exemplos de cada request que pode ser realizada e podem ser executadas via php no terminal:
@@ -85,10 +96,11 @@ Foi criado também um ambiente Docker para facilitar a utilização dos exemplos
 
     * Autenticar na Teia Card e salvar os tokens no Redis: `php examples/1-auth-login-password.php`
     * Listar Enumeradores: `php 3-enumerators.php`
-      * Será apresentada uma lista de enumeradores para selecionar, inclusive uma opção para listar todos
+        * Será apresentada uma lista de enumeradores para selecionar, inclusive uma opção para listar todos
     * Enviar uma nova Venda: `php 4-send-sale.php`
 
 ---
+
 ### Exemplos de utilização
 
 #### Autenticação para obter tokens:
@@ -165,7 +177,9 @@ try {
 }
 
 ```
+
 ---
+
 #### Enviando dados de uma transação
 
 ```php
