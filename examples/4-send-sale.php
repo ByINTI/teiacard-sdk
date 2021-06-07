@@ -97,7 +97,7 @@ try {
 
     echo "\n# Criando objeto Cartao...\n";
     $cartao = new Cartao();
-    $cartao->setNomeProprietario('Thiago Meireles da Silva');
+    $cartao->setNomeProprietario('Nome do Proprietário');
     $cartao->setNumeroTruncado('4111XXXXXXXX1111');
 
     echo "\n# Criando objeto Venda...\n";
@@ -114,12 +114,12 @@ try {
           ->setValorBruto(5.32)
           ->setPlano(2)
           ->setBandeira(1)
-          ->setCaixaNomeOperador('Thiago Meireles da Silva')
+          ->setCaixaNomeOperador('Nome do Operador de Caixa')
           ->setProgramaPromocional(false)
           ->setMeioCaptura(1)
           ->setVoucher(1)
           ->setGatewayPedidoId('3214')
-          ->setChaveErp('INTIBR-123');
+          ->setChaveErp('Chave-123');
 
     echo "\n# Adicionando objeto Venda a Loja...\n";
     $loja->addVenda($venda);
