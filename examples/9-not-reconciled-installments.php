@@ -3,15 +3,8 @@
 declare(strict_types = 1);
 
 use TeiaCardSdk\Client;
+use TeiaCardSdk\Data\Requests\Parcela\ParcelaNaoConciliada;
 use TeiaCardSdk\Data\Requests\Autenticacao\Credenciais;
-use TeiaCardSdk\Data\Requests\Venda\Adquirente;
-use TeiaCardSdk\Data\Requests\Venda\Cartao;
-use TeiaCardSdk\Data\Requests\Venda\Empresa;
-use TeiaCardSdk\Data\Requests\Venda\Estabelecimento;
-use TeiaCardSdk\Data\Requests\Venda\Loja;
-use TeiaCardSdk\Data\Requests\Venda\Maquineta;
-use TeiaCardSdk\Data\Requests\Venda\Venda;
-use TeiaCardSdk\Data\Requests\Venda\Wrapper;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -20,7 +13,7 @@ echo "##########################################################################
 $redis = new Redis() or die("Cannot load Redis module.");
 $redis->connect('redis');
 
-echo "\n\n# Inicio do teste de envio de Venda\n";
+echo "\n\n# Inicio do teste de envio de Parcelas Não Conciliadas\n";
 
 try {
     $token        = $redis->get('teia-card-access-token') ?: null;
@@ -67,79 +60,24 @@ try {
         echo "\n\n# Token e Refresh Token setados no Redis\n";
     }
 
-    echo "\n# Criando objeto Empresa...\n";
-    $empresa = new Empresa();
-    $empresa->setId(1)
-            ->setNome('Teste 1')
-            ->setInscricaoTipo(5)
-            ->setInscricaoNumero('23823212000174');
+    echo "\n# Criando de consulta de Parcelas Não Conciliadas...\n";
+    $parcelasNaoConciliada = new ParcelaNaoConciliada();
+    $parcelasNaoConciliada->setTipoData('venda')
+                          ->setData('20200601')
+                          ->setStatusConciliacao(1)
+                          ->setLimit(1)
+                          ->setPage(1);
 
-    echo "\n# Criando objeto Loja...\n";
-    $loja = new Loja();
-    $loja->setId(1)
-         ->setInscricaoTipo(5)
-         ->setInscricaoNumero('23823212000174');
+    echo "\n# Iniciando requisição de consulta de Parcelas Não Conciliadas...\n";
+    $teiaCard->parcelasNaoConciliadas()->setParcelaNaoConciliada($parcelasNaoConciliada);
+    $response = $teiaCard->parcelasNaoConciliadas()->list();
 
-    echo "\n# Criando objeto Maquineta...\n";
-    $maquineta = new Maquineta();
-    $maquineta->setTipo(1);
-    $maquineta->setNumero('555555555555555');
-
-    echo "\n# Criando objeto Estabelecimento...\n";
-    $estabelecimento = new Estabelecimento();
-    $estabelecimento->setNumero('88888');
-    $estabelecimento->setMaquineta($maquineta);
-
-    echo "\n# Criando objeto Adquirente...\n";
-    $adquirente = new Adquirente();
-    $adquirente->setId(6);
-    $adquirente->setEstabelecimento($estabelecimento);
-
-    echo "\n# Criando objeto Cartao...\n";
-    $cartao = new Cartao();
-    $cartao->setNomeProprietario('Nome do Proprietário');
-    $cartao->setNumeroTruncado('4111XXXXXXXX1111');
-
-    echo "\n# Criando objeto Venda...\n";
-    $venda = new Venda();
-    $venda->setAdquirente($adquirente)
-          ->setServicoTipo(1)
-          ->setCartao($cartao)
-          ->setCaixaNumero('1111')
-          ->setPedidoNumero('4444444444')
-          ->setTaxa(0.23)
-          ->setNsu('42341')
-          ->setAutorizacao('123AVC')
-          ->setVendaDataHora(date('Y-m-d H:i:s', strtotime('now -3 hours')))
-          ->setValorBruto(5.32)
-          ->setPlano(2)
-          ->setBandeira(1)
-          ->setCaixaNomeOperador('Nome do Operador de Caixa')
-          ->setProgramaPromocional(false)
-          ->setMeioCaptura(1)
-          ->setVoucher(1)
-          ->setGatewayPedidoId('3214')
-          ->setChaveErp('Chave-123');
-
-    echo "\n# Adicionando objeto Venda a Loja...\n";
-    $loja->addVenda($venda);
-
-    echo "\n# Adicionando objeto Loja a Empresa...\n";
-    $empresa->addLoja($loja);
-
-    echo "\n# Criando objeto Wrapper...\n";
-    $wrapper = new Wrapper();
-    echo "\n# Adicionando objeto Empresa ao Wrapper...\n";
-    $wrapper->addEmpresa($empresa);
-
-    echo "\n# Iniciando requisição de envio de Venda...\n";
-    $response = $teiaCard->vendas()->send($wrapper);
     echo "\n# Retorno da Teia Card recebido:\n\n";
 
-    $redis->rPush('teia-card-vendas', $response->get('id'));
+    $redis->rPush('teia-card-parcelas', $response->get('id'));
 
     echo $response->toJson(JSON_PRETTY_PRINT);
-    echo "\n\n# Teste de envio de Venda realizado com sucesso!\n\n";
+    echo "\n\n# Teste de consulta de parcelas não consolidadas realizado com sucesso!\n\n";
 } catch (TeiaCardBaseException $e) {
     echo "\n#################################### ERRO DE RESPOSTA DA TEIA CARD ####################################\n#\n";
     echo '# Exception Type: ' . get_class($e) . "\n#\n";

@@ -256,5 +256,47 @@ class Routes
 
         return $anonymous;
     }
+
+    /**
+     * @return Anonymous
+     */
+    public static function cancellationAdjustment(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'retorno/ajustes/cancelamentos';
+        };
+
+        return $anonymous;
+    }
+
+    /**
+     * @return Anonymous
+     */
+    public static function installments(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'retorno/parcelas';
+        };
+
+        return $anonymous;
+    }
+
+    /**
+     * @return Anonymous
+     */
+    public static function unreconciledInstallments(): Anonymous
+    {
+        $anonymous = new Anonymous();
+
+        $anonymous->list = static function () {
+            return 'retorno/parcelas-nao-conciliadas';
+        };
+
+        return $anonymous;
+    }
 }
 

@@ -21,7 +21,7 @@ echo "##########################################################################
 $redis = new Redis() or die("Cannot load Redis module.");
 $redis->connect('redis');
 
-echo "\n\n# Inicio do teste de envio de Venda\n";
+echo "\n\n# Inicio do teste de envio de Ajustes\n";
 
 try {
     $token        = $redis->get('teia-card-access-token') ?: null;
@@ -98,10 +98,10 @@ try {
 
     echo "\n# Criando objeto Cartao...\n";
     $cartao = new Cartao();
-    $cartao->setNomeProprietario('Thiago Meireles da Silva');
+    $cartao->setNomeProprietario('Nome do Proprietario');
     $cartao->setNumeroTruncado('4111XXXXXXXX1111');
 
-    echo "\n# Criando objeto Venda...\n";
+    echo "\n# Criando objeto Ajuste..\n";
     $ajuste = new Ajuste();
     $ajuste->setAdquirente($adquirente)
            ->setServicoTipo(1)
@@ -117,15 +117,15 @@ try {
            ->setDataSolicitacaoEstorno(date('Y-m-d H:i:s', strtotime('now -3 hours')))
            ->setDataEfetivacaoEstorno(date('Y-m-d H:i:s', strtotime('now -3 hours')))
            ->setDataPrevistaDebito(date('Y-m-d H:i:s', strtotime('now -3 hours')))
-           ->setUsuarioAtendente('Thiago Meireles da Silva')
-           ->setCoordenador('Thiago Meireles da Silva')
-           ->setUsuarioFinanceiro('Thiago Meireles da Silva')
+           ->setUsuarioAtendente('Nome do atendente')
+           ->setCoordenador('Nome do coordenador')
+           ->setUsuarioFinanceiro('Nome do usuario financeiro')
            ->setValorEstorno(5.32)
            ->setMotivoEstorno(1)
            ->setTid('TESTE')
            ->setChaveErp('INTIBR-123');
 
-    echo "\n# Adicionando objeto Venda a Loja...\n";
+    echo "\n# Adicionando objeto Ajuste a Loja...\n";
     $loja->addAjuste($ajuste);
 
     echo "\n# Adicionando objeto Loja a Empresa...\n";
@@ -140,10 +140,10 @@ try {
     $response = $teiaCard->ajustes()->send($wrapper);
     echo "\n# Retorno da Teia Card recebido:\n\n";
 
-    $redis->rPush('teia-card-vendas', $response->get('id'));
+    $redis->rPush('teia-card-ajuste', $response->get('id'));
 
     echo $response->toJson(JSON_PRETTY_PRINT);
-    echo "\n\n# Teste de envio de Venda realizado com sucesso!\n\n";
+    echo "\n\n# Teste de envio de Ajustes realizado com sucesso!\n\n";
 } catch (TeiaCardBaseException $e) {
     echo "\n#################################### ERRO DE RESPOSTA DA TEIA CARD ####################################\n#\n";
     echo '# Exception Type: ' . get_class($e) . "\n#\n";

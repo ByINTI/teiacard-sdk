@@ -18,9 +18,12 @@ use TeiaCardSdk\Endpoints\Enumerador\TipoServico;
 use TeiaCardSdk\Endpoints\Enumerador\Voucher;
 use TeiaCardSdk\Endpoints\Remessa\Ajuste;
 use TeiaCardSdk\Endpoints\Remessa\Venda;
+use TeiaCardSdk\Endpoints\Retorno\AjusteCancelamento;
+use TeiaCardSdk\Endpoints\Retorno\Parcelas;
 use TeiaCardSdk\Endpoints\Retorno\Empresa;
 use TeiaCardSdk\Endpoints\Retorno\Estabelecimento;
 use TeiaCardSdk\Endpoints\Retorno\Loja;
+use TeiaCardSdk\Endpoints\Retorno\ParcelasNaoConciliadas;
 use TeiaCardSdk\Exceptions\TeiaCardBaseException;
 use Throwable;
 
@@ -91,6 +94,15 @@ class Client
     /** @var Loja */
     private $loja;
 
+    /** @var AjusteCancelamento */
+    private $ajusteCancelamento;
+
+    /** @var Parcelas */
+    private $parcela;
+
+    /** @var ParcelasNaoConciliadas */
+    private $parcelasNaoConciliadas;
+
     public function __construct(bool $production = false, string $accessToken = null, float $timeout = 5.0)
     {
         if ($accessToken) {
@@ -122,6 +134,9 @@ class Client
         $this->ajuste                  = new Ajuste($this);
         $this->estabelecimento         = new Estabelecimento($this);
         $this->loja                    = new Loja($this);
+        $this->ajusteCancelamento      = new AjusteCancelamento($this);
+        $this->parcela                 = new Parcelas($this);
+        $this->parcelasNaoConciliadas  = new ParcelasNaoConciliadas($this);
     }
 
     /**
@@ -329,5 +344,29 @@ class Client
     public function ajustes(): Ajuste
     {
         return $this->ajuste;
+    }
+
+    /**
+     * @return AjusteCancelamento
+     */
+    public function ajustesCancelamentos(): AjusteCancelamento
+    {
+        return $this->ajusteCancelamento;
+    }
+
+    /**
+     * @return Parcelas
+     */
+    public function parcelas(): Parcelas
+    {
+        return $this->parcela;
+    }
+
+    /**
+     * @return ParcelasNaoConciliadas
+     */
+    public function parcelasNaoConciliadas(): ParcelasNaoConciliadas
+    {
+        return $this->parcelasNaoConciliadas;
     }
 }
