@@ -5,7 +5,7 @@
   "require": {
     "php": ">=7.3",
     "guzzlehttp/guzzle": "~6.5",
-    "illuminate/collections": "8.30"
+    "illuminate/collections": "8.26"
   },
   "authors": [
     {
