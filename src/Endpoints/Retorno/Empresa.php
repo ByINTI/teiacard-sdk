@@ -22,6 +22,6 @@ class Empresa extends Endpoint
             Routes::empresa()->list()
         );
 
-        return collect($response);
+        return collect($response['data']);
     }
 }

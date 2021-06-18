@@ -22,6 +22,6 @@ class Loja extends Endpoint
             Routes::stores()->list()
         );
 
-        return collect($response);
+        return collect($response['empresas']);
     }
 }
