@@ -22,6 +22,6 @@ class Estabelecimento extends Endpoint
             Routes::establishments()->list()
         );
 
-        return collect($response);
+        return collect($response['lojas']);
     }
 }
