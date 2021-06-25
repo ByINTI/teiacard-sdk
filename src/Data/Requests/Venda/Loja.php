@@ -154,7 +154,6 @@ class Loja extends DataTransferObject
     public function addAjuste(Ajuste $ajuste): Loja
     {
         $this->ajustes[] = $ajuste;
-        echo $this->ajustes;
         return $this;
     }
 }
