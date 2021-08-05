@@ -147,6 +147,14 @@ class Loja extends DataTransferObject
     }
 
     /**
+     * @return Ajuste[]
+     */
+    public function getAjustes(): array
+    {
+        return $this->ajustes;
+    }
+
+    /**
      * @param  Ajuste  $ajuste
      *
      * @return Loja
@@ -156,4 +164,18 @@ class Loja extends DataTransferObject
         $this->ajustes[] = $ajuste;
         return $this;
     }
+
+    /**
+     * @param  Ajuste[]  $ajustes
+     *
+     * @return Loja
+     */
+    public function setAjustes(array $ajustes): Loja
+    {
+        $this->ajustes = $ajustes;
+
+        return $this;
+    }
+
+
 }
