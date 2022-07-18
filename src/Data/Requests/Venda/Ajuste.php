@@ -79,7 +79,7 @@ class Ajuste extends DataTransferObject
      *
      * @var float
      */
-    private $valor_bruto;
+    private $valor_bruto_venda;
 
     /**
      * Numero NSU / CV ou DOC
@@ -345,7 +345,7 @@ class Ajuste extends DataTransferObject
      */
     public function getValorBruto(): float
     {
-        return $this->valor_bruto;
+        return $this->valor_bruto_venda;
     }
 
     /**
@@ -353,7 +353,7 @@ class Ajuste extends DataTransferObject
      */
     public function setValorBruto(float $valor_bruto): Ajuste
     {
-        $this->valor_bruto = $valor_bruto;
+        $this->valor_bruto_venda = $valor_bruto;
 
         return $this;
     }
