@@ -11,17 +11,21 @@ use Throwable;
 class Estabelecimento extends Endpoint
 {
     /**
+     * @param Collection $lojas
      * @return Collection
-     * @throws Throwable
-     * @throws TeiaCardBaseException
      */
-    public function getList(): Collection
+    public function getList(Collection $lojas): Collection
     {
-        $response = $this->client->request(
-            self::GET,
-            Routes::establishments()->list()
-        );
-
-        return collect($response['lojas']);
+        $lojas = $lojas->all();
+        return collect(array_reduce($lojas, function ($carry, $loja) {
+            foreach ($loja['adquirentes'] as $adquirente) {
+                foreach ($adquirente['estabelecimentos'] as $estabelecimento) {
+                    $carry[] = $estabelecimento['numero'];
+                }
+            }
+            return $carry;
+        }, []) ?? [])
+            ->unique()
+            ->values();
     }
 }

@@ -15,13 +15,13 @@ class Loja extends Endpoint
      * @throws Throwable
      * @throws TeiaCardBaseException
      */
-    public function getList(): Collection
+    public function getList(string $companyCode): Collection
     {
         $response = $this->client->request(
             self::GET,
-            Routes::stores()->list()
+            Routes::stores($companyCode)->list()
         );
 
-        return collect($response['empresas']);
+        return collect($response['data']);
     }
 }

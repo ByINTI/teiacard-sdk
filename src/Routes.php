@@ -232,26 +232,12 @@ class Routes
     /**
      * @return Anonymous
      */
-    public static function establishments(): Anonymous
+    public static function stores(string $companyCode): Anonymous
     {
         $anonymous = new Anonymous();
 
-        $anonymous->list = static function () {
-            return 'retorno/estabelecimentos';
-        };
-
-        return $anonymous;
-    }
-
-    /**
-     * @return Anonymous
-     */
-    public static function stores(): Anonymous
-    {
-        $anonymous = new Anonymous();
-
-        $anonymous->list = static function () {
-            return 'retorno/lojas';
+        $anonymous->list = static function () use($companyCode) {
+            return 'retorno/empresas/'. $companyCode .'/lojas?include=adquirentes.estabelecimentos';
         };
 
         return $anonymous;
