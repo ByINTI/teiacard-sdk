@@ -214,6 +214,18 @@ class Venda extends DataTransferObject
     private $parcelas;
 
     /**
+     * Caso CV e NSU não seja informado. Geralmente é o ID da transação na adquirente.
+     *
+     * String transacao_id
+     *
+     * Default value: null
+     * Type: String
+     *
+     * @var string
+     */
+    private $transacao_id;
+
+    /**
      * @return Adquirente
      */
     public function getAdquirente(): Adquirente
@@ -624,4 +636,23 @@ class Venda extends DataTransferObject
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getTransacaoId(): string
+    {
+        return $this->transacao_id;
+    }
+
+    /**
+     * @param string $transacao_id
+     * @return $this
+     */
+    public function setTransacaoId(string $transacao_id): Venda
+    {
+        $this->transacao_id = $transacao_id;
+        return $this;
+    }
+
 }
